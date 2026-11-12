@@ -1,8 +1,9 @@
 import React from 'react';
 import { ExternalLink, ArrowUpRight, Building2 } from 'lucide-react';
 import { GithubIcon } from './Icons';
+import TechIcon from './TechIcon';
 
-export default function ProjectCard({ project, onSelect }) {
+export default function ProjectCard({ project, onSelect }: { project: any; onSelect: (p: any) => void }) {
   return (
     <div className="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-emerald-500/50 dark:hover:border-emerald-500/40 transition-all duration-300 flex flex-col overflow-hidden w-full">
       
@@ -55,22 +56,19 @@ export default function ProjectCard({ project, onSelect }) {
           </p>
         </div>
 
-        {/* Technologies preview */}
+        {/* Technologies preview: Icons only with Tooltip */}
         <div>
-          <div className="flex flex-wrap gap-1.5 mb-3.5 sm:mb-4">
-            {project.technologies?.slice(0, 4).map((tech, idx) => (
-              <span
+          <div className="flex flex-wrap gap-2 mb-3.5 sm:mb-4 items-center">
+            {project.technologies?.map((tech: string, idx: number) => (
+              <div
                 key={idx}
-                className="px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                title={tech}
+                aria-label={tech}
+                className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700/70 hover:scale-110 transition-transform cursor-pointer"
               >
-                {tech}
-              </span>
+                <TechIcon name={tech} className="w-4 h-4 shrink-0" />
+              </div>
             ))}
-            {project.technologies?.length > 4 && (
-              <span className="px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-500">
-                +{project.technologies.length - 4}
-              </span>
-            )}
           </div>
 
           {/* Card Action Buttons */}

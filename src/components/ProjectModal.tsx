@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { X, ExternalLink, CheckCircle2, Award, Brain, Code, AlertCircle, Building2, UserCheck, Terminal } from 'lucide-react';
 import { GithubIcon } from './Icons';
+import TechIcon from './TechIcon';
 
-export default function ProjectModal({ project, onClose }) {
-  const [activeTab, setActiveTab] = useState('overview');
+export default function ProjectModal({ project, onClose }: { project: any; onClose: () => void }) {
+  const [activeTab, setActiveTab] = useState<'overview' | 'contributions' | 'skills'>('overview');
 
   if (!project) return null;
 
@@ -96,7 +97,7 @@ export default function ProjectModal({ project, onClose }) {
         {/* Modal Scrollable Content */}
         <div className="p-4 sm:p-6 overflow-y-auto space-y-5 sm:space-y-6">
 
-          {/* TAB 1: OVERVIEW (Problem & Solution) - SEM demonstração visual */}
+          {/* TAB 1: OVERVIEW (Problem & Solution) */}
           {activeTab === 'overview' && (
             <div className="space-y-4 sm:space-y-6">
               {/* Problem Statement Box */}
@@ -121,19 +122,21 @@ export default function ProjectModal({ project, onClose }) {
                 </p>
               </div>
 
-              {/* Technologies */}
+              {/* Technologies: Compact Icons with Tooltip */}
               <div>
                 <h4 className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">
                   Tecnologias Utilizadas no Projeto
                 </h4>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.technologies?.map((tech, idx) => (
-                    <span
+                <div className="flex flex-wrap gap-2.5 items-center">
+                  {project.technologies?.map((tech: string, idx: number) => (
+                    <div
                       key={idx}
-                      className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700"
+                      title={tech}
+                      aria-label={tech}
+                      className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:scale-110 transition-transform cursor-pointer"
                     >
-                      {tech}
-                    </span>
+                      <TechIcon name={tech} className="w-5 h-5 shrink-0" />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -196,7 +199,7 @@ export default function ProjectModal({ project, onClose }) {
                   Classificação baseada em autonomia prática (Básico / Autônomo / Fluente).
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
-                  {project.hardSkills?.map((item, idx) => (
+                  {project.hardSkills?.map((item: any, idx: number) => (
                     <div
                       key={idx}
                       className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5"
@@ -227,7 +230,7 @@ export default function ProjectModal({ project, onClose }) {
                   </h4>
                 </div>
                 <div className="space-y-2.5 sm:space-y-3">
-                  {project.softSkills?.map((item, idx) => (
+                  {project.softSkills?.map((item: any, idx: number) => (
                     <div
                       key={idx}
                       className="p-3 sm:p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 space-y-1"
