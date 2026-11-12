@@ -7,7 +7,7 @@ export const personalInfo = {
   period: "2024 – Presente",
   location: "São José dos Campos - SP, Brasil",
   avatar: `${BASE_URL}img/foto_guilherme.jpg`,
-  summary: "Desenvolvedor de software com foco em Engenharia de Dados e Backend. Experiência na concepção da arquitetura de servidores backend, modelagem de bancos de dados relacionais e NoSQL, captação e processamento de telemetria com IoT e análise de dados. Coautor de publicação científica internacional sobre modelagem de dados e monitoramento de queimadas por sensores orbitais.",
+  summary: "Desenvolvedor de software com foco em Engenharia de Dados e Backend. Experiência na concepção da arquitetura de servidores backend, modelagem de bancos de dados relacionais e NoSQL, captação e processamento de telemetria com IoT e análise de dados.",
   academicObjective: "Consolidar a formação tecnológica em DSM na FATEC SJC, aprofundando o desenvolvimento de arquiteturas de dados e engenharia de backend escalável.",
   professionalObjective: "Atuar como Engenheiro de Dados / Desenvolvedor Backend, construindo pipelines analíticos eficientes, modelagem de bancos de dados e APIs resilientes.",
   interests: [
