@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Technologies from './components/Technologies';
 import Projects from './components/Projects';
 import Curriculum from './components/Curriculum';
+import Hobbies from './components/Hobbies';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -33,6 +34,7 @@ export default function App() {
         <Technologies />
         <Projects />
         <Curriculum />
+        <Hobbies />
         <Contact />
       </main>
       <Footer />

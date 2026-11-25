@@ -20,11 +20,17 @@ import {
   SiHtml5,
   SiCss,
   SiReact,
-  SiArduino
+  SiArduino,
+  SiDjango,
+  SiNestjs,
+  SiFlutter,
+  SiDart,
+  SiTailwindcss,
+  SiVite
 } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
+import { FaJava, FaAws } from 'react-icons/fa';
 import { DiScrum } from 'react-icons/di';
-import { Database, Code2 } from 'lucide-react';
+import { Database, Code2, Bot } from 'lucide-react';
 
 interface TechIconProps {
   name: string;
@@ -38,6 +44,56 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   // Python
   if (normalized.includes('python')) {
     return <SiPython className={className} style={showColor ? { color: '#3776AB' } : undefined} />;
+  }
+
+  // Django
+  if (normalized.includes('django')) {
+    return <SiDjango className={className} style={showColor ? { color: '#092E20' } : undefined} />;
+  }
+
+  // NestJS
+  if (normalized.includes('nest')) {
+    return <SiNestjs className={className} style={showColor ? { color: '#E0234E' } : undefined} />;
+  }
+
+  // Flutter
+  if (normalized.includes('flutter')) {
+    return <SiFlutter className={className} style={showColor ? { color: '#02569B' } : undefined} />;
+  }
+
+  // Dart
+  if (normalized.includes('dart')) {
+    return <SiDart className={className} style={showColor ? { color: '#0175C2' } : undefined} />;
+  }
+
+  // Tailwind CSS
+  if (normalized.includes('tailwind')) {
+    return <SiTailwindcss className={className} style={showColor ? { color: '#06B6D4' } : undefined} />;
+  }
+
+  // Vite
+  if (normalized.includes('vite')) {
+    return <SiVite className={className} style={showColor ? { color: '#646CFF' } : undefined} />;
+  }
+
+  // HTML
+  if (normalized.includes('html')) {
+    return <SiHtml5 className={className} style={showColor ? { color: '#E34F26' } : undefined} />;
+  }
+
+  // CSS
+  if (normalized.includes('css')) {
+    return <SiCss className={className} style={showColor ? { color: '#1572B6' } : undefined} />;
+  }
+
+  // AWS / S3 (evita falso-positivo com 'css3')
+  if (normalized.includes('aws') || normalized === 's3' || normalized.includes('amazon') || normalized.includes('aws s3')) {
+    return <FaAws className={className} style={showColor ? { color: '#FF9900' } : undefined} />;
+  }
+
+  // PLN / IA / pgvector
+  if (normalized === 'ia' || normalized === 'ai' || normalized.includes('pln') || normalized.includes('nlp') || normalized.includes('pgvector') || normalized.includes('inteligência artificial')) {
+    return <Bot className={className} style={showColor ? { color: '#6366F1' } : undefined} />;
   }
 
   // TypeScript
@@ -58,16 +114,6 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   // Shell Script / Bash
   if (normalized.includes('shell') || normalized.includes('bash')) {
     return <SiGnubash className={className} style={showColor ? { color: '#4EAA25' } : undefined} />;
-  }
-
-  // HTML
-  if (normalized.includes('html')) {
-    return <SiHtml5 className={className} style={showColor ? { color: '#E34F26' } : undefined} />;
-  }
-
-  // CSS
-  if (normalized.includes('css')) {
-    return <SiCss className={className} style={showColor ? { color: '#1572B6' } : undefined} />;
   }
 
   // Node.js

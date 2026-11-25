@@ -15,7 +15,7 @@ export default function Projects() {
 
   return (
     <>
-      {/* SEÇÃO: PROJETOS ACADÊMICOS (API 1º AO 3º SEMESTRE) */}
+      {/* SEÇÃO: PROJETOS ACADÊMICOS (API 1º AO 6º SEMESTRE) */}
       <section id="projetos-api" className="py-12 sm:py-20 lg:py-24 border-t border-slate-200/80 dark:border-slate-800/80 w-full overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -24,17 +24,17 @@ export default function Projects() {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-2.5 border border-emerald-200 dark:border-emerald-800">
                 <Layers className="w-3.5 h-3.5 shrink-0" />
-                <span>Metodologia Ativa de Ensino (API) • 1º ao 3º Semestre</span>
+                <span>Metodologia Ativa de Ensino (API) • 1º ao 6º Semestre</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                 Projetos Acadêmicos Integradores
               </h2>
               <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                Aplicações desenvolvidas em equipe (Dev Team) ao longo da formação em DSM na FATEC São José dos Campos. Detalhamento de Hard Skills, Soft Skills e evidências das soluções entregues.
+                Aplicações desenvolvidas em equipe ao longo de toda a formação em DSM na FATEC São José dos Campos. Detalhamento de atribuições, Hard Skills, Soft Skills e soluções entregues.
               </p>
             </div>
 
-            {/* Filter buttons */}
+            {/* Dynamic filter buttons */}
             <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl border border-slate-200 dark:border-slate-700 self-start overflow-x-auto max-w-full">
               <button
                 onClick={() => setActiveFilter('all')}
@@ -44,38 +44,21 @@ export default function Projects() {
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
-                Todos (3)
+                Todos ({academicProjects.length})
               </button>
-              <button
-                onClick={() => setActiveFilter('api-1')}
-                className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                  activeFilter === 'api-1'
-                    ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                1º Semestre
-              </button>
-              <button
-                onClick={() => setActiveFilter('api-2')}
-                className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                  activeFilter === 'api-2'
-                    ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                2º Semestre
-              </button>
-              <button
-                onClick={() => setActiveFilter('api-3')}
-                className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                  activeFilter === 'api-3'
-                    ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                3º Semestre
-              </button>
+              {academicProjects.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => setActiveFilter(p.id)}
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
+                    activeFilter === p.id
+                      ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  {p.semester}
+                </button>
+              ))}
             </div>
           </div>
 

@@ -18,6 +18,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
     { name: 'Tecnologias', href: '#tecnologias' },
     { name: 'Projetos API', href: '#projetos-api' },
     { name: 'Formação & Artigo', href: '#curriculo' },
+    { name: 'Hobbies', href: '#hobbies' },
     { name: 'Contato', href: '#contato' },
   ];
 
